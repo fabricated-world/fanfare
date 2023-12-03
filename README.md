@@ -83,7 +83,7 @@ to invite the bot, use the link printed in the console
 
 ### Localizations
 As of today, the bot is only localized in the following languages:
-If you want to join the translation effort in order to make open-discord-translator available to a broader audience of people [you're welcome to help](https://crowdin.com/project/open-discord-translator/invite?h=1bff0f20415b6c77c234e5c0acd677771811165)!
+If you want to join the translation effort in order to make open-discord-translator available to a broader audience of people [you're welcome to help](https://crowdin.com/project/fanfare/invite?h=a3fc0c4dde57a7b16066d380af79ed561923526)!
 
 ### Setup
 ⚠️ To setup the bot, you'll need a discord bot token. If you don't know how to create one, you can find a quick tutorial [here](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot).
