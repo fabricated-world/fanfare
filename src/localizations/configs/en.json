@@ -1,0 +1,17 @@
+{
+  "commands": {
+    "helloworld": {
+      "name": "helloworld",
+      "description": "I just want to say HELLO",
+      "content": "HELLO OH OH OH O"
+    }
+  },
+  "context": {
+  },
+  "common": {
+    "errors": {
+      "missingPermission": "oops! I don't have permission to do that, please check that you've used the correct invite link!",
+      "unknown": "There was an error while executing this command!"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fanfare-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Mi # 10Mi should be plenty
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fanfare-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fanfare-deployment
+  template:
+    metadata:
+      labels:
+        app: fanfare-deployment
+    spec:
+      containers:
+      - name: fanfare-deployment
+        image: ghcr.io/fabriacted-world/fanfare:latest
+        env:
+          - name: TOKEN
+            value: "[your token here]" # https://discord.com/developers/applications
+          - name: GUILD
+            value: "" # if set, the commands will only be available in this guild whose ID is linked here
+          - name: SKIP_COMMAND_VALIDATION
+            value: "false" # if set to true, the bot will not check if the commands are up to date
+          - name: STATUS
+            value: "" # The status message you want the bot to have.
+          - name: SQLITE_PATH
+            value: "/data/database.sqlite" # the path to the database file
+          - name: DATABASE_DRIVER
+            value: "sqlite" # sqlite is the only driver supported for now but feel free to add more
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "50m"
+        volumeMounts:
+          - name: fanfare-volume
+            mountPath: /data/
+      volumes:
+      - name: fanfare-volume
+        persistentVolumeClaim:
+          claimName: fanfare-pvc

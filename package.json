@@ -1,0 +1,35 @@
+{
+  "name": "fanfare",
+  "version": "1.0.0",
+  "description": "fanfare is a powerful discord bot to \"stack\" voice channels (create unlimited, on-demand, voice channels.)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabricated-world/fanfare.git"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "discord",
+    "discord-bot",
+    "bot",
+    "multilangual"
+  ],
+  "author": "Kalitsune (fanny@fabricated.world)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/fabricated-world/fanfare/issues"
+  },
+  "homepage": "https://github.com/fabricated-world/fanfare#readme",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1",
+    "dotenv-parse-variables": "^2.0.0",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
