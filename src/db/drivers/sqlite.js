@@ -25,8 +25,19 @@ module.exports = {
 
         // create the tables if they don't exist
 
+        return databaseRun(`CREATE TABLE IF NOT EXISTS make_voice (
+            id TEXT NOT NULL,
+            name TEXT NOT NULL,
+            owner TEXT NOT NULL
+        );
+        
+        CREATE TABLE IF NOT EXISTS entree (
+            id TEXT NOT NULL,
+            name TEXT NOT NULL
+        )`);
+
     },
-    async exemple() {
-        return "data";
-    },
+    async new_voice(id, name, owner) {
+        return databaseRun(`INSERT INTO make_voice (id, name, owner) VALUES (?, ?, ?)`, [id, name, owner]);
+    }
 }

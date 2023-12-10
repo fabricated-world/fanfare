@@ -13,6 +13,7 @@ const db = require('./db/db.js');
 async function main() {
   let intents = [
     GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildVoiceStates
   ];
 
   // init discord.js
