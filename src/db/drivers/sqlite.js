@@ -25,13 +25,13 @@ module.exports = {
 
         // create the tables if they don't exist
 
-        return databaseRun(`CREATE TABLE IF NOT EXISTS make_voice (
+        databaseRun(`CREATE TABLE IF NOT EXISTS make_voice (
             id TEXT NOT NULL,
             name TEXT NOT NULL,
             owner TEXT NOT NULL
-        );
+        );`)
         
-        CREATE TABLE IF NOT EXISTS entree (
+        return databaseRun(`CREATE TABLE IF NOT EXISTS entree (
             id TEXT NOT NULL,
             name TEXT NOT NULL
         )`);

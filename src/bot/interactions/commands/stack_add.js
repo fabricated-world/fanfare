@@ -11,11 +11,12 @@ module.exports = {
         .addStringOption(option => option.setName('salont').setDescription('nom du salont').setRequired(true)),
 
     async execute(interaction) {
-        const nom = interaction.options.getString('nom');
+        const nom = interaction.options.getString('salont');
+
         const id = interaction.guild.channels.cache.find(ch => ch.name === nom);
 
         interaction.client.db.add_entree(0, nom);
 
-        return await interaction.reply("ok");
+        return await interaction.reply(`le salont ${nom} a etais ajouter a la liste des point d'entree`);
     }
 };
