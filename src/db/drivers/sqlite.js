@@ -39,5 +39,13 @@ module.exports = {
     },
     async new_voice(id, name, owner) {
         return databaseRun(`INSERT INTO make_voice (id, name, owner) VALUES (?, ?, ?)`, [id, name, owner]);
+    },
+    async is_entree(name) {
+        const [results] = databaseRun(`SELECT COUNT(*) as count FROM  WHERE name = ?`, [name]);
+        const Existe = results[0].count > 0;
+        return Existe;
+    },
+    async add_entree(id, name){
+        return databaseRun(`INSERT INTO entree (id, name) VALUES (?, ?)`, [id, name]);
     }
 }

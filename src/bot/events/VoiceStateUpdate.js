@@ -12,16 +12,28 @@ module.exports = {
 
             const channel = newState.guild.channels.cache.get('1180608131760406609');
         
+            let join = "";
+            let leave = "";
+
             if (!oldChannel && newChannel) {
-                // L'utilisateur est arrivé dans un canal vocal
-                channel.send(`${member.user.tag} est arrivé dans ${newChannel.name}`);
+                join = newChannel.name;
             } else if (oldChannel && !newChannel) {
-                // L'utilisateur est parti d'un canal vocal
-                channel.send(`${member.user.tag} est parti de ${oldChannel.name}`);
+                leave = oldChannel.name
             } else if (oldChannel && newChannel && oldChannel.id !== newChannel.id) {
-                // L'utilisateur a changé de canal vocal
-                channel.send(`${member.user.tag} a changé de ${oldChannel.name} à ${newChannel.name}`);
+                join = newChannel.name;
+                leave = oldChannel.name;
             }
+
+            if (join !== ""){
+                if (is_entree(join)){
+                    console.log("i hop an chanelle will be make")
+                }
+            }
+
+            if (leave !== ""){
+                console.log("un salont a etais quiter")
+            }
+
         } catch (error) {
             console.log('Une erreur s\'est produite :', error);
 
