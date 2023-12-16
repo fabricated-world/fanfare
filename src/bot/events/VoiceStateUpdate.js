@@ -9,8 +9,6 @@ module.exports = {
 
             const oldChannel = oldState.channel;  // Canal vocal précédent
             const newChannel = newState.channel;  // Nouveau canal vocal
-
-            const channel = newState.guild.channels.cache.get('1180608131760406609');
         
             let join = "";
             let leave = "";
@@ -25,7 +23,7 @@ module.exports = {
             }
 
             if (join !== ""){
-                if (interaction.client.db.is_entree(join)){
+                if (newState.client.db.is_entree(join)){
                     console.log("i hop an chanelle will be make")
                 }
             }
