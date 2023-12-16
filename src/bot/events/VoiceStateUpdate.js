@@ -25,7 +25,7 @@ module.exports = {
             }
 
             if (join !== ""){
-                if (is_entree(join)){
+                if (interaction.client.db.is_entree(join)){
                     console.log("i hop an chanelle will be make")
                 }
             }
