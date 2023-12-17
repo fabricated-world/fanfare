@@ -47,5 +47,8 @@ module.exports = {
     },
     async add_entree(id, name){
         return databaseRun(`INSERT INTO entree (id, name) VALUES (?, ?)`, [id, name]);
+    },
+    async list_entree(){
+        return databaseAll("SELECT name as count FROM entree");
     }
 }

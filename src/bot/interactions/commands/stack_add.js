@@ -15,8 +15,11 @@ module.exports = {
 
         const id = interaction.guild.channels.cache.find(ch => ch.name === nom);
 
-        interaction.client.db.add_entree(0, nom);
+        if (interaction.client.db.is_entree(nom)){
+            return await interaction.reply(`le salont ${nom} est deja dans la liste.`);
+        }
 
+        interaction.client.db.add_entree(0, nom);
         return await interaction.reply(`le salont ${nom} a etais ajouter a la liste des point d'entree`);
     }
 };
