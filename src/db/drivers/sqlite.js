@@ -41,8 +41,8 @@ module.exports = {
         return databaseRun(`INSERT INTO make_voice (id, name, owner) VALUES (?, ?, ?)`, [id, name, owner]);
     },
     async is_entree(name) {
-        const test = databaseGet(`SELECT COUNT(*) as count FROM entree WHERE name = ?`, [name]);
-        const Existe = test > 0;
+        const test = await databaseGet(`SELECT COUNT(*) as count FROM entree WHERE name = ?`, [name]);
+        const Existe = test["count"] > 0;
         return Existe;
     },
     async add_entree(id, name){

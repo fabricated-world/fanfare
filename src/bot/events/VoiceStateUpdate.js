@@ -1,4 +1,4 @@
-const { Events, MessageEmbed } = require('discord.js');
+const { Events, MessageEmbed, ChannelType } = require('discord.js');
 const { getLocalization } = require('../../localizations/localizations.js');
 
 module.exports = {
@@ -23,13 +23,16 @@ module.exports = {
             }
 
             if (join !== ""){
-                if (newState.client.db.is_entree(join)){
-                    console.log("i hop an chanelle will be make")
+                if (await newState.client.db.is_entree(join)){
+                    const chan = await newState.guild.channels.create({name: member.user.username,type: ChannelType.GuildVoice,});
+                    await member.voice.setChannel(chan);
+
+                    await newState.client.db.new_voice(0,member.user.username,member.user.username);
                 }
             }
 
             if (leave !== ""){
-                console.log("un salont a etais quiter")
+                
             }
 
         } catch (error) {
