@@ -40,6 +40,17 @@ module.exports = {
     async new_voice(id, name, owner) {
         return databaseRun(`INSERT INTO make_voice (id, name, owner) VALUES (?, ?, ?)`, [id, name, owner]);
     },
+    async is_creat_voice(name){
+        const test = await databaseGet(`SELECT COUNT(*) as count FROM make_voice WHERE name = ?`, [name]);
+        const Existe = test["count"] > 0;
+        return Existe;
+    },
+    async get_creat_voice(name){
+        return databaseGet(`SELECT name,owner,id FROM make_voice WHERE name=?`, [name]);
+    },
+    async rm_creat_voice(id){
+        return databaseRun(`DELETE FROM make_voice WHERE id = ?`, [id]);
+    },
     async is_entree(name) {
         const test = await databaseGet(`SELECT COUNT(*) as count FROM entree WHERE name = ?`, [name]);
         const Existe = test["count"] > 0;

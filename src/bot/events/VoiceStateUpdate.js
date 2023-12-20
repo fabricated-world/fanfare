@@ -27,12 +27,19 @@ module.exports = {
                     const chan = await newState.guild.channels.create({name: member.user.username,type: ChannelType.GuildVoice,});
                     await member.voice.setChannel(chan);
 
-                    await newState.client.db.new_voice(0,member.user.username,member.user.username);
+                    await newState.client.db.new_voice(chan.id,member.user.username,member.user.username);
                 }
             }
 
             if (leave !== ""){
-                
+                if (await newState.client.db.is_creat_voice(leave)){
+                    let chan_get = await newState.client.db.get_creat_voice(leave);
+                    
+                    if (chan_get.name == chan_get.owner){
+                        await newState.client.db.rm_creat_voice(chan_get.id);
+                        await newState.guild.channels.delete(chan_get.id);
+                    }
+                }
             }
 
         } catch (error) {
