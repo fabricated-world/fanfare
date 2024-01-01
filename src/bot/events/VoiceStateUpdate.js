@@ -27,6 +27,8 @@ module.exports = {
                     const chan = await newState.guild.channels.create({name: member.user.username,type: ChannelType.GuildVoice,});
                     await member.voice.setChannel(chan);
 
+                    //console.log(chan.permissionOverwrites.edit(member.user.id));
+
                     await newState.client.db.new_voice(chan.id,member.user.username,member.user.username);
                 }
             }

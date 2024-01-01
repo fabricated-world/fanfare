@@ -18,6 +18,19 @@ module.exports = {
 
         await reloadSlashCommands(client)
 
+        //verificiation de la db pour prevenire les bug lier au crashe
+
+        data = await client.db.all_creat_voice()
+
+        data.forEach(element => {            
+            let channel_rec = client.channels.cache.get(element.id);
+
+            if(!channel_rec.members.has(element.owner)){
+                channel_rec.delete(element.id);
+                client.db.rm_creat_voice(element.id);
+            };
+          });
+
         // Greet the user
         console.log(`Ready! Serving ${client.commands.size} commands as ${client.user.tag}`);
 

@@ -13,7 +13,7 @@ if (!fs.existsSync(driverFile)) {
 }
 
 //check if the drivers contains the required methods
-const requiredMethods = ['new_voice','is_entree','add_entree','list_entree','rm_entree','is_creat_voice','get_creat_voice','rm_creat_voice'];
+const requiredMethods = ['new_voice','is_entree','add_entree','list_entree','rm_entree','is_creat_voice','get_creat_voice','rm_creat_voice',"all_creat_voice"];
 const driver = require(driverFile);
 for (const method of requiredMethods) {
     if (!(method in driver)) {

@@ -48,6 +48,9 @@ module.exports = {
     async get_creat_voice(name){
         return databaseGet(`SELECT name,owner,id FROM make_voice WHERE name=?`, [name]);
     },
+    async all_creat_voice(){
+        return databaseAll("SELECT * FROM make_voice");
+    },
     async rm_creat_voice(id){
         return databaseRun(`DELETE FROM make_voice WHERE id = ?`, [id]);
     },
