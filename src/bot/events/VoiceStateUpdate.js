@@ -36,8 +36,8 @@ module.exports = {
             if (leave !== ""){
                 if (await newState.client.db.is_creat_voice(leave)){
                     let chan_get = await newState.client.db.get_creat_voice(leave);
-                    
-                    if (chan_get.name == chan_get.owner){
+
+                    if (member.user.username == chan_get.owner){
                         await newState.client.db.rm_creat_voice(chan_get.id);
                         await newState.guild.channels.delete(chan_get.id);
                     }
