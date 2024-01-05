@@ -29,7 +29,12 @@ module.exports = {
             id TEXT NOT NULL,
             name TEXT NOT NULL,
             owner TEXT NOT NULL
-        );`)
+        );`);
+
+        databaseRun(`CREATE TABLE IF NOT EXISTS template (
+            template_id INT AUTO_INCREMENT PRIMARY KEY,
+            template TEXT NOT NULL
+        )`);
         
         return databaseRun(`CREATE TABLE IF NOT EXISTS entree (
             id TEXT NOT NULL,
@@ -67,5 +72,12 @@ module.exports = {
     },
     async list_entree(){
         return databaseAll("SELECT name as count FROM entree");
+    },
+    async add_template(string){
+        return databaseRun(`INSERT INTO template (template) VALUES (?)` [string]);
+    },
+    async get_randome_template(){
+        const data = await databaseAll(`SELECT template FROM template`);
+        return data[Math.floor(Math.random() * data.length)];
     }
 }
