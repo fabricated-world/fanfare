@@ -29,7 +29,7 @@ module.exports = {
 
                     await chan.permissionOverwrites.edit(member.id, {ManageChannels : true, MoveMembers : true, ManageChannels : true});
 
-                    await newState.client.db.new_voice(chan.id,member.user.username,member.user.username);
+                    await newState.client.db.new_voice(chan.id,member.user.username,member.user.id);
                 }
             }
 
@@ -40,7 +40,7 @@ module.exports = {
 
                     let chan_get = await newState.client.db.get_creat_voice(leave);
 
-                    if (member.user.username == chan_get.owner){
+                    if (member.user.id == chan_get.owner){
                         await newState.client.db.rm_creat_voice(chan_get.id);
                         await newState.guild.channels.delete(chan_get.id);
                     }

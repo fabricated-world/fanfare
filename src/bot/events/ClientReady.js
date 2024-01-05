@@ -28,7 +28,7 @@ module.exports = {
                 let if_1 = false;
 
                 channel_rec.members.forEach(element_2 => {
-                    if_1 = if_1 | (element_2.user.username === element.owner)
+                    if_1 = if_1 | (element_2.user.id === element.owner)
                 });
     
                 if(!if_1){
