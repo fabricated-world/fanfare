@@ -45,8 +45,8 @@ module.exports = {
         const Existe = test["count"] > 0;
         return Existe;
     },
-    async get_creat_voice(name){
-        return databaseGet(`SELECT name,owner,id FROM make_voice WHERE name=?`, [name]);
+    async get_creat_voice(id){
+        return databaseGet(`SELECT name,owner,id FROM make_voice WHERE id=?`, [id]);
     },
     async all_creat_voice(){
         return databaseAll("SELECT * FROM make_voice");

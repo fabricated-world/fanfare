@@ -16,10 +16,10 @@ module.exports = {
             if (!oldChannel && newChannel) {
                 join = newChannel.name;
             } else if (oldChannel && !newChannel) {
-                leave = oldChannel.name
+                leave = oldChannel.id;
             } else if (oldChannel && newChannel && oldChannel.id !== newChannel.id) {
                 join = newChannel.name;
-                leave = oldChannel.name;
+                leave = oldChannel.id;
             }
 
             if (join !== ""){
@@ -35,6 +35,8 @@ module.exports = {
 
             if (leave !== ""){
                 if (await newState.client.db.is_creat_voice(leave)){
+                    console.log(leave);
+
                     let chan_get = await newState.client.db.get_creat_voice(leave);
 
                     if (member.user.username == chan_get.owner){

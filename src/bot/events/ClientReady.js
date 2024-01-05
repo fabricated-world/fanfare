@@ -23,18 +23,23 @@ module.exports = {
         data = await client.db.all_creat_voice()
 
         data.forEach(async element => {
-            const channel_rec = await client.channels.fetch(element.id);
-            let if_1 = false;
+            try {
+                const channel_rec = await client.channels.fetch(element.id);
+                let if_1 = false;
 
-            channel_rec.members.forEach(element_2 => {
-                if_1 = if_1 | (element_2.user.username === element.owner)
-            });
- 
-            if(!if_1){
-                channel_rec.delete(element.id);
+                channel_rec.members.forEach(element_2 => {
+                    if_1 = if_1 | (element_2.user.username === element.owner)
+                });
+    
+                if(!if_1){
+                    channel_rec.delete(element.id);
+                    client.db.rm_creat_voice(element.id);
+                };
+            } 
+            catch (error) {
                 client.db.rm_creat_voice(element.id);
-            };
-          });
+            }
+        });
 
         // Greet the user
         console.log(`Ready! Serving ${client.commands.size} commands as ${client.user.tag}`);
