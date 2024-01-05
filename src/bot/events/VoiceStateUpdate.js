@@ -33,9 +33,10 @@ module.exports = {
                 }
             }
 
-            if (leave !== ""){
+            console.log(leave);
+
+            if (leave != ""){
                 if (await newState.client.db.is_creat_voice(leave)){
-                    console.log(leave);
 
                     let chan_get = await newState.client.db.get_creat_voice(leave);
 
