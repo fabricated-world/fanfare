@@ -32,10 +32,10 @@ module.exports = {
         );`);
 
         databaseRun(`CREATE TABLE IF NOT EXISTS template (
-            template_id INT AUTO_INCREMENT PRIMARY KEY,
+            template_id INTEGER PRIMARY KEY AUTOINCREMENT,
             template TEXT NOT NULL
-        )`);
-        
+        );`);
+
         return databaseRun(`CREATE TABLE IF NOT EXISTS entree (
             id TEXT NOT NULL,
             name TEXT NOT NULL
@@ -74,7 +74,7 @@ module.exports = {
         return databaseAll("SELECT name as count FROM entree");
     },
     async add_template(string){
-        return databaseRun(`INSERT INTO template (template) VALUES (?)` [string]);
+        return databaseRun(`INSERT INTO template (template) VALUES (?)`, [string]);
     },
     async get_randome_template(){
         const data = await databaseAll(`SELECT template FROM template`);
@@ -82,5 +82,13 @@ module.exports = {
     },
     async get_template(){
         return await databaseAll(`SELECT * FROM template`);
+    },
+    async is_template(string){
+        const test = await databaseGet(`SELECT COUNT(*) as count FROM template WHERE template = ?`, [string]);
+        const Existe = test["count"] > 0;
+        return Existe;
+    },
+    async rm_template(string){
+        return databaseRun(`DELETE FROM template WHERE template = ?`, [string]);
     }
 }
