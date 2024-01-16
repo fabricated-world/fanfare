@@ -24,7 +24,11 @@ module.exports = {
 
             if (join !== ""){
                 if (await newState.client.db.is_entree(join)){
-                    const chan = await newState.guild.channels.create({name: member.user.username,type: ChannelType.GuildVoice,});
+                    let name_salon = await newState.client.db.get_randome_template();
+
+                    name_salon = name_salon.replace("%username%", member.user.username);
+
+                    const chan = await newState.guild.channels.create({name: name_salon,type: ChannelType.GuildVoice,});
                     await member.voice.setChannel(chan);
 
                     await chan.permissionOverwrites.edit(member.id, {ManageChannels : true, MoveMembers : true, ManageChannels : true});
@@ -32,8 +36,6 @@ module.exports = {
                     await newState.client.db.new_voice(chan.id,member.user.username,member.user.id);
                 }
             }
-
-            console.log(leave);
 
             if (leave != ""){
                 if (await newState.client.db.is_creat_voice(leave)){

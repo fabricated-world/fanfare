@@ -78,7 +78,7 @@ module.exports = {
     },
     async get_randome_template(){
         const data = await databaseAll(`SELECT template FROM template`);
-        return data[Math.floor(Math.random() * data.length)];
+        return data[Math.floor(Math.random() * data.length)]["template"];
     },
     async get_template(){
         return await databaseAll(`SELECT * FROM template`);
