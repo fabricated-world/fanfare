@@ -4,6 +4,10 @@
       "name": "helloworld",
       "description": "I just want to say HELLO",
       "content": "HELLO OH OH OH O"
+    },
+    "slack_add":{
+      "name": "salck_add",
+      "description": "Add an entry point."
     }
   },
   "context": {
