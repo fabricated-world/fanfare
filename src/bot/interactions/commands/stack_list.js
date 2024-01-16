@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { ChannelType } = require('discord.js');
 
 module.exports = {
     init(client) {
@@ -11,11 +10,11 @@ module.exports = {
 
 
     async execute(interaction) {
-        const list = await interaction.client.db.list_entree();
+        const liste_slack = await interaction.client.db.list_entree();
 
         let returned_text = "la liste des salon d'entree est : \n";
 
-        list.forEach(element => {
+        liste_slack.forEach(element => {
             returned_text += '- ' + element["count"] + "\n";
           });
 

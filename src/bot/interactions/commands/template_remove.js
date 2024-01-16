@@ -11,14 +11,14 @@ module.exports = {
         .addStringOption(option => option.setName('template').setDescription('text du template a suprimer').setRequired(true)),
 
     async execute(interaction) {
-        const nom = interaction.options.getString('template');
+        const name_template = interaction.options.getString('template');
 
-        if (!interaction.client.db.is_template(nom)){
-            return await interaction.reply(`le template ${nom} nexiste pas.`);
+        if (!interaction.client.db.is_template(name_template)){
+            return await interaction.reply(`le template ${name_template} nexiste pas.`);
         }
 
-        interaction.client.db.rm_template(nom);
+        interaction.client.db.rm_template(name_template);
 
-        return await interaction.reply(`le template ${nom} a etais retirer a la liste.`);
+        return await interaction.reply(`le template ${name_template} a etais retirer a la liste.`);
     }
 };

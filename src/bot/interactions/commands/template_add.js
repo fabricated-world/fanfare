@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { ChannelType } = require('discord.js');
 
 module.exports = {
     init(client) {
@@ -11,14 +10,14 @@ module.exports = {
         .addStringOption(option => option.setName('template').setDescription('template').setRequired(true)),
 
     async execute(interaction) {
-        const string = interaction.options.getString('template');
+        const new_template = interaction.options.getString('template');
 
-        if (await interaction.client.db.is_template(string)){
-            return await interaction.reply(`le template ${string} existe deja.`);
+        if (await interaction.client.db.is_template(new_template)){
+            return await interaction.reply(`le template ${new_template} existe deja.`);
         }
 
-        await interaction.client.db.add_template(string);
+        await interaction.client.db.add_template(new_template);
         
-        return await interaction.reply(`le template "${string}" a etais ajouter.`); 
+        return await interaction.reply(`le template "${new_template}" a etais ajouter.`); 
     }
 };

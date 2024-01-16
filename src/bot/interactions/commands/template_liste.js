@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { ChannelType } = require('discord.js');
 
 module.exports = {
     init(client) {
@@ -11,12 +10,12 @@ module.exports = {
 
 
     async execute(interaction) {
-        const list = await interaction.client.db.get_template();
+        const template_list = await interaction.client.db.get_template();
 
         let returned_text = "liste des template: \n";
 
 
-        list.forEach(element => {
+        template_list.forEach(element => {
             returned_text += '- ' + element["template"] + "\n";
         });
 
