@@ -7,7 +7,9 @@
     },
     "slack_add":{
       "name": "salck_add",
-      "description": "Add an entry point."
+      "description": "Add an entry point.",
+      "arg1" : "chanel",
+      "arg1_description" : "chanel to add at entry point."
     }
   },
   "context": {

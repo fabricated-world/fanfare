@@ -1,20 +1,23 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, Events } = require('discord.js');
 
-const { getKeyLocalizations, getLocalization} = require('../../../localizations/localizations');
+const { getKeyLocalizations, getLocalization } = require('../../../localizations/localizations');
 
 module.exports = {
+    name: Events.InteractionCreate,
     init(client) {
-        // Initialisation si nécessaire
+        
     },
     data: new SlashCommandBuilder()
         .setName('slack_add')
         .setDescription("ajouter une entree")
 
-        .setNameLocalization(getKeyLocalizations('commands:slack_add.name'))
+        
+        .setNameLocalizations(getKeyLocalizations('commands:slack_add.name'))
         .setDescriptionLocalizations(getKeyLocalizations('commands:slack_add.description'))
 
-        .addStringOption(option => option.setName('salont')
-        .setDescription('nom du salont')
+        .addStringOption(option => option.setName('salont').setDescription("salont a ajouter")
+        .setDescriptionLocalizations(getKeyLocalizations('commands:slack_add.arg1_description'))
+        .setNameLocalizations(getKeyLocalizations('commands:slack_add.arg1'))
         .setRequired(true)),
 
     async execute(interaction) {
