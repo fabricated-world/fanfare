@@ -18,6 +18,29 @@ module.exports = {
 
         await reloadSlashCommands(client)
 
+        //verificiation de la db pour prevenire les bug lier au crashe
+
+        data = await client.db.all_creat_voice()
+
+        data.forEach(async element => {
+            try {
+                const channel_rec = await client.channels.fetch(element.id);
+                let if_1 = false;
+
+                channel_rec.members.forEach(element_2 => {
+                    if_1 = if_1 | (element_2.user.id === element.owner)
+                });
+    
+                if(!if_1){
+                    channel_rec.delete(element.id);
+                    client.db.rm_creat_voice(element.id);
+                };
+            } 
+            catch (error) {
+                client.db.rm_creat_voice(element.id);
+            }
+        });
+
         // Greet the user
         console.log(`Ready! Serving ${client.commands.size} commands as ${client.user.tag}`);
 

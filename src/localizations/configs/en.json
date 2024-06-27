@@ -4,6 +4,71 @@
       "name": "helloworld",
       "description": "I just want to say HELLO",
       "content": "HELLO OH OH OH O"
+    },
+    "slack_add":{
+      "name": "salck_add",
+      "description": "Add an entry point.",
+
+      "arg1" : "chanel",
+      "arg1_description" : "chanel to add at entry point.",
+
+      "output": {
+        "ok" : "The chanel %chanel% is alredy existe in entry point liste.",
+        "alredy_existe" : "The chanel %chanel% will e add to the liste of entree point.",
+        "not_existe" : "%chanel% dose not existe."
+      }
+    },
+    "slack_list":{
+      "name" : "slack_list",
+      "description" : "liste entree point.",
+
+      "output" : {
+        "hedear" : "the liste of chanel whase entry point : \n"
+      }
+    },
+    "slack_remove":{
+      "name" : "slack_remove",
+      "description" : "remove entry point.",
+
+      "arg1" : "chanel",
+      "arg1_description" : "chanel to remove at entry point.",
+
+      "output" : {
+        "ok" : "The chanel %chanel% whase remove from entry point.",
+        "already_existe" : "The chanel %chanel% whas'nt in the liste."
+      }
+    },
+    "template_add" : {
+      "name" : "template_add",
+      "description" : "add template to liste.",
+
+      "arg1" : "template",
+      "arg1_description" : "template to had in the liste you can use %username%.",
+
+      "output" : {
+        "ok" : "The template have been add to liste.",
+        "already_existe" : "this template is already in liste."
+      }
+    },
+    "template_liste":{
+      "name" : "template_liste",
+      "description" : "Print the liste of template",
+
+      "output" : {
+        "hedear" : "the liste of template : \n"
+      }
+    },
+    "template_remove":{
+      "name" : "template_remove",
+      "description" : "remove an template.",
+
+      "arg1" : "template",
+      "arg1_description" : "template to remove at liste.",
+
+      "output" : {
+        "ok" : "The template will be remove.",
+        "not_existe" : "The template whas'nt in the liste."
+      }
     }
   },
   "context": {

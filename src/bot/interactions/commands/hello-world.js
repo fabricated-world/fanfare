@@ -7,7 +7,8 @@ module.exports = {
 
     },
     data: new SlashCommandBuilder()
-        .setName('helloworld').setDescription("I just want to say HELLO")
+        .setName('helloworld')
+        .setDescription("I just want to say HELLO")
         .setNameLocalizations(getKeyLocalizations('commands:helloworld.name'))
         .setDescriptionLocalizations(getKeyLocalizations('commands:helloworld.description')),
 
@@ -15,3 +16,5 @@ module.exports = {
         return await interaction.reply(getLocalization('commands:helloworld.content', interaction.locale));
     }
 }
+
+//Trad
