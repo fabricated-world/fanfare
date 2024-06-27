@@ -1,5 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js');
-const { ChannelType } = require('discord.js');
+const { SlashCommandBuilder, ChannelType } = require('discord.js');
+const { getKeyLocalizations, getLocalization } = require('../../../localizations/localizations');
 
 module.exports = {
     init(client) {
@@ -8,17 +8,24 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('template_remove')
         .setDescription("suprimer un template")
-        .addStringOption(option => option.setName('template').setDescription('text du template a suprimer').setRequired(true)),
+
+        .setNameLocalizations(getKeyLocalizations('commands:template_remove.name'))
+        .setDescriptionLocalizations(getKeyLocalizations('commands:template_remove.description'))
+
+        .addStringOption(option => option.setName('template').setDescription('text du template a suprimer')
+        .setDescriptionLocalizations(getKeyLocalizations('commands:template_remove.arg1_description'))
+        .setNameLocalizations(getKeyLocalizations('commands:template_remove.arg1'))
+        .setRequired(true)),
 
     async execute(interaction) {
         const name_template = interaction.options.getString('template');
 
         if (!interaction.client.db.is_template(name_template)){
-            return await interaction.reply(`le template ${name_template} nexiste pas.`);
+            return await interaction.reply(getKeyLocalizations("commands:template_remove.output.not_existe", interaction.locale));
         }
 
         interaction.client.db.rm_template(name_template);
 
-        return await interaction.reply(`le template ${name_template} a etais retirer a la liste.`);
+        return await interaction.reply(getKeyLocalizations("commands:template_remove.output.ok", interaction.locale));
     }
 };

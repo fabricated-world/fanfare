@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { getKeyLocalizations, getLocalization } = require('../../../localizations/localizations');
 
 module.exports = {
     init(client) {
@@ -6,13 +7,15 @@ module.exports = {
     },
     data: new SlashCommandBuilder()
         .setName('template_list')
-        .setDescription("lister les template"),
-
+        .setDescription("lister les template")
+        
+        .setNameLocalizations(getKeyLocalizations('commands:template_liste.name'))
+        .setDescriptionLocalizations(getKeyLocalizations('commands:template_liste.description')),
 
     async execute(interaction) {
         const template_list = await interaction.client.db.get_template();
 
-        let returned_text = "liste des template: \n";
+        let returned_text = getLocalization("commands:template_liste.output.header", interaction.locale);
 
 
         template_list.forEach(element => {
@@ -22,3 +25,5 @@ module.exports = {
         return await interaction.reply(returned_text);
     }
 };
+
+//Trad

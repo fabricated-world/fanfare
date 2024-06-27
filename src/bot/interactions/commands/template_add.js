@@ -21,11 +21,13 @@ module.exports = {
         const new_template = interaction.options.getString('template');
 
         if (await interaction.client.db.is_template(new_template)){
-            return await interaction.reply(`le template ${new_template} existe deja.`);
+            return await interaction.reply(getLocalization("commands:template_add.output.already_existe", interaction.locale));
         }
 
         await interaction.client.db.add_template(new_template);
         
-        return await interaction.reply(`le template "${new_template}" a etais ajouter.`); 
+        return await interaction.reply(getLocalization("commands:template_add.output.ok", interaction.locale)); 
     }
 };
+
+//Trad

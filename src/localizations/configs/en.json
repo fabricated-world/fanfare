@@ -42,7 +42,32 @@
       "description" : "add template to liste.",
 
       "arg1" : "template",
-      "arg1_description" : "template to had in the liste you can use %username%"
+      "arg1_description" : "template to had in the liste you can use %username%.",
+
+      "output" : {
+        "ok" : "The template have been add to liste.",
+        "already_existe" : "this template is already in liste."
+      }
+    },
+    "template_liste":{
+      "name" : "template_liste",
+      "description" : "Print the liste of template",
+
+      "output" : {
+        "hedear" : "the liste of template : \n"
+      }
+    },
+    "template_remove":{
+      "name" : "template_remove",
+      "description" : "remove an template.",
+
+      "arg1" : "template",
+      "arg1_description" : "template to remove at liste.",
+
+      "output" : {
+        "ok" : "The template will be remove.",
+        "not_existe" : "The template whas'nt in the liste."
+      }
     }
   },
   "context": {
