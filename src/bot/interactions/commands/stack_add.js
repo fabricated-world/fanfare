@@ -26,10 +26,10 @@ module.exports = {
         const id_channel = interaction.guild.channels.cache.find(ch => ch.name === channel_name);
 
         if (await interaction.client.db.is_entree(channel_name)){
-            return await interaction.reply(`le salont ${channel_name} est deja dans la liste.`);
+            return await interaction.reply(getLocalization("commands:slack_add.output.ok", interaction.locale).replace("%chanel%", channel_name));
         }
 
         interaction.client.db.add_entree(id_channel, channel_name);
-        return await interaction.reply(`le salont ${channel_name} a etais ajouter a la liste des point d'entree`);
+        return await interaction.reply(getLocalization("commands:slack_add.output.alredy_existe", interaction.locale).replace("%chanel%", channel_name));
     }
 };

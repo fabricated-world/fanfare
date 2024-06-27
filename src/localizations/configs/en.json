@@ -9,7 +9,12 @@
       "name": "salck_add",
       "description": "Add an entry point.",
       "arg1" : "chanel",
-      "arg1_description" : "chanel to add at entry point."
+      "arg1_description" : "chanel to add at entry point.",
+
+      "output": {
+        "ok" : "le salont %chanel% est deja dans la liste.",
+        "alredy_existe" : "le salont %chanel% a etais ajouter a la liste des point d'entree"
+      }
     }
   },
   "context": {
