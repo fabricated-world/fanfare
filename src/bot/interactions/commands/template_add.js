@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { getKeyLocalizations, getLocalization } = require('../../../localizations/localizations');
 
 module.exports = {
     init(client) {
