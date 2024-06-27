@@ -24,12 +24,17 @@ module.exports = {
 
         const id_channel = interaction.guild.channels.cache.find(ch => ch.name === channel_name);
 
-        if (await interaction.client.db.is_entree(channel_name)){
-            return await interaction.reply(getLocalization("commands:slack_add.output.ok", interaction.locale).replace("%chanel%", channel_name));
+        if (id_channel !== undefined) {
+            if (await interaction.client.db.is_entree(channel_name)){
+                return await interaction.reply(getLocalization("commands:slack_add.output.ok", interaction.locale).replace("%chanel%", channel_name));
+            }
+    
+            interaction.client.db.add_entree(id_channel, channel_name);
+            return await interaction.reply(getLocalization("commands:slack_add.output.alredy_existe", interaction.locale).replace("%chanel%", channel_name));
+        } 
+        else {
+            return await interaction.reply(getLocalization("commands:slack_add.output.not_existe", interaction.locale).replace("%chanel%", channel_name));
         }
-
-        interaction.client.db.add_entree(id_channel, channel_name);
-        return await interaction.reply(getLocalization("commands:slack_add.output.alredy_existe", interaction.locale).replace("%chanel%", channel_name));
     }
 };
 

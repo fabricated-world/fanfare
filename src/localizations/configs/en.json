@@ -14,7 +14,8 @@
 
       "output": {
         "ok" : "The chanel %chanel% is alredy existe in entry point liste.",
-        "alredy_existe" : "The chanel %chanel% will e add to the liste of entree point."
+        "alredy_existe" : "The chanel %chanel% will e add to the liste of entree point.",
+        "not_existe" : "%chanel% dose not existe."
       }
     },
     "slack_list":{
