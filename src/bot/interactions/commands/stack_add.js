@@ -11,7 +11,6 @@ module.exports = {
         .setName('slack_add')
         .setDescription("ajouter une entree")
 
-        
         .setNameLocalizations(getKeyLocalizations('commands:slack_add.name'))
         .setDescriptionLocalizations(getKeyLocalizations('commands:slack_add.description'))
 
@@ -33,3 +32,5 @@ module.exports = {
         return await interaction.reply(getLocalization("commands:slack_add.output.alredy_existe", interaction.locale).replace("%chanel%", channel_name));
     }
 };
+
+//Trad

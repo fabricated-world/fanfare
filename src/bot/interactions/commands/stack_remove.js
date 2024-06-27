@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { getKeyLocalizations, getLocalization } = require('../../../localizations/localizations');
 
 module.exports = {
     init(client) {
@@ -7,17 +8,26 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('slack_remove')
         .setDescription("retirer une entree")
-        .addStringOption(option => option.setName('salont').setDescription('nom du salont').setRequired(true)),
+
+        .setNameLocalizations(getKeyLocalizations('commands:stack_remove.name'))
+        .setDescriptionLocalizations(getKeyLocalizations('commands:stack_remove.description'))
+
+        .addStringOption(option => option.setName('salont').setDescription('nom du salont')
+        .setDescriptionLocalizations(getKeyLocalizations('commands:slack_remove.arg1_description'))
+        .setNameLocalizations(getKeyLocalizations('commands:slack_remove.arg1'))
+        .setRequired(true)),
 
     async execute(interaction) {
         const channel_name = interaction.options.getString('salont');
 
         if (!interaction.client.db.is_entree(channel_name)){
-            return await interaction.reply(`le salont ${channel_name} n'est pas dans la liste.`);
+            return await interaction.reply(getLocalization("commands:stack_remove.output.already_existe", interaction.locale).replace("%chanel%", channel_name));
         }
 
         interaction.client.db.rm_entree(channel_name);
 
-        return await interaction.reply(`le salont ${channel_name} a etais retirer a la liste des point d'entree`);
+        return await interaction.reply(getLocalization("commands:stack_remove.output.ok", interaction.locale).replace("%chanel%", channel_name));
     }
 };
+
+//Trad

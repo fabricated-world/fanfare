@@ -8,13 +8,41 @@
     "slack_add":{
       "name": "salck_add",
       "description": "Add an entry point.",
+
       "arg1" : "chanel",
       "arg1_description" : "chanel to add at entry point.",
 
       "output": {
-        "ok" : "le salont %chanel% est deja dans la liste.",
-        "alredy_existe" : "le salont %chanel% a etais ajouter a la liste des point d'entree"
+        "ok" : "The chanel %chanel% is alredy existe in entry point liste.",
+        "alredy_existe" : "The chanel %chanel% will e add to the liste of entree point."
       }
+    },
+    "slack_list":{
+      "name" : "slack_list",
+      "description" : "liste entree point.",
+
+      "output" : {
+        "hedear" : "the liste of chanel whase entry point : \n"
+      }
+    },
+    "slack_remove":{
+      "name" : "slack_remove",
+      "description" : "remove entry point.",
+
+      "arg1" : "chanel",
+      "arg1_description" : "chanel to remove at entry point.",
+
+      "output" : {
+        "ok" : "The chanel %chanel% whase remove from entry point.",
+        "already_existe" : "The chanel %chanel% whas'nt in the liste."
+      }
+    },
+    "template_add" : {
+      "name" : "template_add",
+      "description" : "add template to liste.",
+
+      "arg1" : "template",
+      "arg1_description" : "template to had in the liste you can use %username%"
     }
   },
   "context": {

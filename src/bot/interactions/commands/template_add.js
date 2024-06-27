@@ -7,7 +7,14 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('template_add')
         .setDescription("ajouter un template")
-        .addStringOption(option => option.setName('template').setDescription('template').setRequired(true)),
+
+        .setNameLocalizations(getKeyLocalizations('commands:template_add.name'))
+        .setDescriptionLocalizations(getKeyLocalizations('commands:template_add.description'))
+
+        .addStringOption(option => option.setName('template').setDescription('template')
+        .setDescriptionLocalizations(getKeyLocalizations('commands:template_add.arg1_description'))
+        .setNameLocalizations(getKeyLocalizations('commands:template_add.arg1'))
+        .setRequired(true)),
 
     async execute(interaction) {
         const new_template = interaction.options.getString('template');

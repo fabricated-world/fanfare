@@ -16,3 +16,5 @@ module.exports = {
         return await interaction.reply(getLocalization('commands:helloworld.content', interaction.locale));
     }
 }
+
+//Trad
